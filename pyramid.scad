@@ -17,3 +17,12 @@ module pyramid(width, length, height) {
     ]
   );
 }
+
+module hollow_pyramid(width, length, thickness, height) {
+  factor = (width - thickness * 2) / width;
+  difference() {
+    pyramid(width, length, height);
+
+    pyramid(width - thickness * 2, length - thickness * 2, height * factor);
+  }
+}
