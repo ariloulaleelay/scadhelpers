@@ -43,3 +43,24 @@ module rz(v) {
       child(c);
   }
 }
+
+module mx() {
+  for (c = [0:$children-1]) {
+    mirror([1, 0, 0])
+      child(c);
+  }
+}
+
+module my() {
+  for (c = [0:$children-1]) {
+    mirror([0, 1, 0])
+      child(c);
+  }
+}
+
+module mz() {
+  for (c = [0:$children-1]) {
+    mirror([0, 0, 1])
+      child(c);
+  }
+}
