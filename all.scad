@@ -6,3 +6,5 @@ include <transform.scad>
 
 // misc functions
 include <functions.scad>
+
+include <clone.scad>
