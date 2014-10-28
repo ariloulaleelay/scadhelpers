@@ -1,2 +1,2 @@
 
-sqr(x) = x * x;
+function sqr(x) = x * x;
