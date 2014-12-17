@@ -4,7 +4,7 @@ module ring(diameter_min, diameter_max, height) {
     cylinder(h = height, d = diameter_max);
 
     tz(-tolerance / 2)
-    cylinder(h = height + tolerance / 2, d = diameter_min);
+    cylinder(h = height + tolerance, d = diameter_min);
   }
 }
 
