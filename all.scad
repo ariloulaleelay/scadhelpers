@@ -8,3 +8,5 @@ include <transform.scad>
 include <functions.scad>
 
 include <clone.scad>
+
+include <ring.scad>
