@@ -44,17 +44,15 @@ def extended_spiral(segments_number):
         alphas_ray.append(float(i) / (segments_number - 1))
 
     polyline_text = ''
-    polyline_text += ','.join(map(lambda alpha: '[cos(a*{0})*(q+w*{0}+wt*pow({0}, alpha_power)),sin(a*{0})*(q+w*{0}+wt*pow({0}, alpha_power))]'.format(alpha), alphas))
-    polyline_text += ',' + ','.join(map(lambda alpha: '[cos(a*{0})*(e+ww*{0}+wwt*pow({0}, alpha_power)),sin(a*{0})*(e+ww*{0} + wwt*pow({0}, alpha_power))]'.format(alpha), reversed(alphas)))
+    polyline_text += ','.join(map(lambda alpha: 'p(angle*{0},r00*(1-{0})+r01*{0})'.format(alpha), alphas))
+    polyline_text += ',' + ','.join(map(lambda alpha: 'p(angle*{0},r10*(1-{0})+r11*{0})'.format(alpha), reversed(alphas)))
     print '''
-module extended_spiral_{segments_number}(radius_from, radius_to, thickness_from, thickness_to, height, angle, alpha_power) {{
-    q=radius_from - thickness_from / 2;
-    e=radius_from + thickness_from / 2;
-    w=(radius_to - radius_from);
-    wt= -(thickness_to - thickness_from) / 2;
-    ww=(radius_to - radius_from);
-    wwt = (thickness_to - thickness_from) / 2;
-    a=angle;
+module extended_spiral_{segments_number}(radius_from, radius_to, thickness_from, thickness_to, height, angle) {{
+    function p(phi,r) = [cos(phi)*r, sin(phi)*r];
+    r00 = radius_from - thickness_from / 2;
+    r01 = radius_to - thickness_to / 2;
+    r10 = radius_from + thickness_from / 2;
+    r11 = radius_to + thickness_to / 2;
     linear_extrude(height=height)
         polygon([{polyline_text}]);
 }}
