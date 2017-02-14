@@ -9,6 +9,13 @@ module tx(v) {
   }
 }
 
+module txy(v) {
+  for (c = [0:$children-1]) {
+    translate([v, v, 0])
+      child(c);
+  }
+}
+
 module ty(v) {
   for (c = [0:$children-1]) {
     translate([0, v, 0])
