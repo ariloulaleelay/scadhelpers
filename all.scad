@@ -13,3 +13,5 @@ include <functions.scad>
 include <clone.scad>
 
 include <ring.scad>
+
+include <constants.scad>
