@@ -16,6 +16,13 @@ module txy(v) {
   }
 }
 
+module txyz(x=0, y=0, z=0) {
+  for (c = [0:$children-1]) {
+    translate([x, y, z])
+      child(c);
+  }
+}
+
 module ty(v) {
   for (c = [0:$children-1]) {
     translate([0, v, 0])
